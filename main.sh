@@ -108,7 +108,7 @@ EOF`
 # cpu
 cpu_info() {
   # cpu负载
-  cpu_use=$(top -n 1 | grep %Cpu | awk -F, '{print $4}' | awk '{printf "%.1f%%", 100-$2}')
+  cpu_use=$(top -b -n 1 | grep %Cpu | awk -F, '{print $4}' | awk '{printf "%.1f%%", 100-$2}')
   # 占用cpu进程前5
   process_top5=$(ps -eo pid,ppid,%mem,%cpu,user,comm --sort=-%cpu | head -n 6)
   # 日志数据
